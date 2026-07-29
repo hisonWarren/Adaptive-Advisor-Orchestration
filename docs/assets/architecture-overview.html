@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Adaptive Advisor Orchestration — Architecture</title>
+<style>
+  :root {
+    --bg0: #0f172a; --bg1: #1e293b; --ink: #f8fafc; --muted: #94a3b8;
+    --cyan: #38bdf8; --teal: #22d3ee; --violet: #a78bfa; --amber: #fbbf24;
+    --red: #f87171; --green: #34d399; --purple: #c084fc; --line: #475569;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: linear-gradient(135deg, #0f172a, #1e293b);
+    font-family: "Segoe UI", Helvetica, Arial, sans-serif; color: var(--ink);
+  }
+  .canvas { width: 1280px; height: 720px; padding: 40px 48px; position: relative; overflow: hidden; }
+  .glow { position: absolute; border-radius: 50%; pointer-events: none; }
+  .g1 { right: -40px; top: -80px; width: 320px; height: 320px; background: #334155; opacity: .25; }
+  .g2 { left: -60px; bottom: -100px; width: 360px; height: 360px; background: #0ea5e9; opacity: .08; }
+  h1 { margin: 0; font-size: 28px; font-weight: 700; position: relative; }
+  .sub { margin: 8px 0 28px; color: var(--muted); font-size: 15px; position: relative; }
+  .grid { display: grid; grid-template-columns: 360px 360px 360px; gap: 40px; position: relative; }
+  .col { display: flex; flex-direction: column; gap: 24px; }
+  .card {
+    background: linear-gradient(180deg, #1e293b, #0f172a);
+    border: 1.5px solid var(--line); border-radius: 14px; padding: 18px 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.35);
+  }
+  .label { font-size: 12px; letter-spacing: 1px; font-weight: 600; margin-bottom: 8px; }
+  .title { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+  .desc { font-size: 13px; color: var(--muted); line-height: 1.45; }
+  .c-cyan { border-color: var(--cyan); } .c-cyan .label { color: var(--cyan); }
+  .c-teal { border-color: var(--teal); } .c-teal .label { color: var(--teal); }
+  .c-violet { border-color: var(--violet); } .c-violet .label { color: var(--violet); }
+  .c-red { border-color: var(--red); } .c-red .label { color: var(--red); }
+  .c-green { border-color: var(--green); } .c-green .label { color: var(--green); }
+  .c-purple { border-color: var(--purple); } .c-purple .label { color: var(--purple); }
+  .panel { min-height: 396px; }
+  .panel .label { color: var(--amber); }
+  .chips { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0 18px; }
+  .chip { border-radius: 8px; padding: 10px 12px; font-size: 13px; font-weight: 600; text-align: center; }
+  .chip.full { grid-column: 1 / -1; background: #334155; border: 1px solid #64748b; color: #e2e8f0; }
+  .p0 { background: #0ea5e9; color: #0f172a; }
+  .p1 { background: #0284c7; }
+  .p2 { background: #0891b2; }
+  .p3 { background: #b45309; }
+  .p4 { background: #7c3aed; }
+  .p5 { background: #4f46e5; }
+  .foot {
+    margin-top: 28px; background: #020617; border: 1px solid #334155; border-radius: 14px;
+    padding: 18px 22px; position: relative;
+  }
+  .foot strong { display: block; margin-bottom: 6px; }
+  .foot p { margin: 4px 0; color: var(--muted); font-size: 13px; }
+  .muted2 { color: #64748b !important; }
+</style>
+</head>
+<body>
+  <div class="canvas" id="shot">
+    <div class="glow g1"></div>
+    <div class="glow g2"></div>
+    <h1>Adaptive Advisor Orchestration</h1>
+    <div class="sub">Architecture overview · progressive disclosure · permanent guards · fail-closed scripts</div>
+    <div class="grid">
+      <div class="col">
+        <div class="card c-cyan">
+          <div class="label">L1 · ALWAYS LOADED</div>
+          <div class="title">name + description</div>
+          <div class="desc">YAML frontmatter trigger surface</div>
+        </div>
+        <div class="card c-teal">
+          <div class="label">L2 · ON TRIGGER</div>
+          <div class="title">SKILL.md body</div>
+          <div class="desc">6 phases · guards · execution contract</div>
+        </div>
+        <div class="card c-violet">
+          <div class="label">L3 · ON DEMAND</div>
+          <div class="title">references/ + scripts/</div>
+          <div class="desc">role-generation · facilitation · retrieval<br/>heterogeneity · score · lint (stdlib)</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card panel">
+          <div class="label">SIX-PHASE WORKFLOW</div>
+          <div class="title">Construction → Critique → Reconstruct</div>
+          <div class="chips">
+            <div class="chip p0">0 Qualify</div>
+            <div class="chip p1">1 Roles</div>
+            <div class="chip p2">2 Construct</div>
+            <div class="chip p3">3 Adversary</div>
+            <div class="chip p4">4 Reconstruct</div>
+            <div class="chip p5">5 Converge</div>
+            <div class="chip full">6 Second-order · Stop</div>
+          </div>
+          <div class="desc">Preflight: EXECUTE · EXECUTE+NET · REASONING-ONLY<br/>Fail-closed: packaged scripts or INVALID<br/>Human Approver retains DACI authority</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card c-red">
+          <div class="label">PERMANENT GUARD</div>
+          <div class="title">Adversary</div>
+          <div class="desc">Steelman → attack → pre-mortem → reconstruct</div>
+        </div>
+        <div class="card c-green">
+          <div class="label">PERMANENT GUARD</div>
+          <div class="title">Reality wall</div>
+          <div class="desc">Per-person load test · drop human-rejecting traps</div>
+        </div>
+        <div class="card c-purple">
+          <div class="label">MANDATORY OUTSIDER</div>
+          <div class="title">Paradigm outsider</div>
+          <div class="desc">Rejects the problem’s native jargon</div>
+        </div>
+      </div>
+    </div>
+    <div class="foot">
+      <strong>Scripts as gates (not decoration)</strong>
+      <p>heterogeneity_check.py · score_options.py · lint_output.py</p>
+      <p class="muted2">Same-model agreement ≠ correctness · external evidence + human Approver</p>
+    </div>
+  </div>
+</body>
+</html>

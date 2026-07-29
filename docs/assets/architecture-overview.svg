@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Adaptive Advisor Orchestration  Architecture Overview</title>
+  <desc id="desc">Progressive disclosure stack, permanent guards, six-phase workflow, and fail-closed scripts.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#94a3b8"/>
+    </marker>
+    <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <circle cx="1100" cy="80" r="160" fill="#334155" opacity="0.25"/>
+  <circle cx="160" cy="620" r="180" fill="#0ea5e9" opacity="0.08"/>
+
+  <text x="56" y="58" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#f8fafc">Adaptive Advisor Orchestration</text>
+  <text x="56" y="88" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" fill="#94a3b8">Architecture overview · progressive disclosure · permanent guards · fail-closed scripts</text>
+
+  <!-- Left stack -->
+  <g filter="url(#soft)">
+    <rect x="56" y="130" width="360" height="96" rx="14" fill="url(#card)" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="78" y="168" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#38bdf8" letter-spacing="1">L1 · ALWAYS LOADED</text>
+    <text x="78" y="196" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#f8fafc">name + description</text>
+    <text x="78" y="218" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#94a3b8">YAML frontmatter trigger surface</text>
+
+    <rect x="56" y="250" width="360" height="112" rx="14" fill="url(#card)" stroke="#22d3ee" stroke-width="1.5"/>
+    <text x="78" y="288" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#22d3ee" letter-spacing="1">L2 · ON TRIGGER</text>
+    <text x="78" y="316" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#f8fafc">SKILL.md body</text>
+    <text x="78" y="338" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#94a3b8">6 phases · guards · execution contract</text>
+
+    <rect x="56" y="386" width="360" height="140" rx="14" fill="url(#card)" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="78" y="424" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#a78bfa" letter-spacing="1">L3 · ON DEMAND</text>
+    <text x="78" y="452" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#f8fafc">references/ + scripts/</text>
+    <text x="78" y="478" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#94a3b8">role-generation · facilitation · retrieval</text>
+    <text x="78" y="500" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#94a3b8">heterogeneity · score · lint (stdlib)</text>
+  </g>
+
+  <!-- Center flow -->
+  <g filter="url(#soft)">
+    <rect x="460" y="130" width="360" height="396" rx="16" fill="url(#card)" stroke="#475569" stroke-width="1.5"/>
+    <text x="484" y="168" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#fbbf24" letter-spacing="1">SIX-PHASE WORKFLOW</text>
+    <text x="484" y="196" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#f8fafc">Construction ’ Critique ’ Reconstruct</text>
+
+    <!-- phase chips -->
+    <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13">
+      <rect x="484" y="220" width="148" height="36" rx="8" fill="#0ea5e9"/>
+      <text x="504" y="243" fill="#0f172a" font-weight="600">0 Qualify</text>
+      <rect x="648" y="220" width="148" height="36" rx="8" fill="#0284c7"/>
+      <text x="668" y="243" fill="#f8fafc" font-weight="600">1 Roles</text>
+
+      <rect x="484" y="272" width="148" height="36" rx="8" fill="#0891b2"/>
+      <text x="504" y="295" fill="#f8fafc" font-weight="600">2 Construct</text>
+      <rect x="648" y="272" width="148" height="36" rx="8" fill="#b45309"/>
+      <text x="668" y="295" fill="#f8fafc" font-weight="600">3 Adversary</text>
+
+      <rect x="484" y="324" width="148" height="36" rx="8" fill="#7c3aed"/>
+      <text x="504" y="347" fill="#f8fafc" font-weight="600">4 Reconstruct</text>
+      <rect x="648" y="324" width="148" height="36" rx="8" fill="#4f46e5"/>
+      <text x="668" y="347" fill="#f8fafc" font-weight="600">5 Converge</text>
+
+      <rect x="484" y="376" width="312" height="36" rx="8" fill="#334155" stroke="#64748b"/>
+      <text x="560" y="399" fill="#e2e8f0" font-weight="600">6 Second-order · Stop</text>
+    </g>
+
+    <text x="484" y="450" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#94a3b8">Preflight: EXECUTE · EXECUTE+NET · REASONING-ONLY</text>
+    <text x="484" y="476" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#94a3b8">Fail-closed: packaged scripts or INVALID</text>
+    <text x="484" y="502" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#94a3b8">Human Approver retains DACI authority</text>
+  </g>
+
+  <!-- Right guards -->
+  <g filter="url(#soft)">
+    <rect x="860" y="130" width="360" height="120" rx="14" fill="url(#card)" stroke="#f87171" stroke-width="1.5"/>
+    <text x="882" y="168" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#f87171" letter-spacing="1">PERMANENT GUARD</text>
+    <text x="882" y="196" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#f8fafc">Adversary</text>
+    <text x="882" y="220" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#94a3b8">Steelman ’ attack ’ pre-mortem ’ reconstruct</text>
+
+    <rect x="860" y="268" width="360" height="120" rx="14" fill="url(#card)" stroke="#34d399" stroke-width="1.5"/>
+    <text x="882" y="306" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#34d399" letter-spacing="1">PERMANENT GUARD</text>
+    <text x="882" y="334" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#f8fafc">Reality wall</text>
+    <text x="882" y="358" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#94a3b8">Per-person load test · drop human-rejecting traps</text>
+
+    <rect x="860" y="406" width="360" height="120" rx="14" fill="url(#card)" stroke="#c084fc" stroke-width="1.5"/>
+    <text x="882" y="444" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#c084fc" letter-spacing="1">MANDATORY OUTSIDER</text>
+    <text x="882" y="472" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#f8fafc">Paradigm outsider</text>
+    <text x="882" y="496" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#94a3b8">Rejects the problems native jargon</text>
+  </g>
+
+  <!-- Bottom bar -->
+  <rect x="56" y="560" width="1168" height="108" rx="14" fill="#020617" stroke="#334155"/>
+  <text x="78" y="598" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#e2e8f0">Scripts as gates (not decoration)</text>
+  <text x="78" y="628" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#94a3b8">heterogeneity_check.py  ·  score_options.py  ·  lint_output.py</text>
+  <text x="78" y="652" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#64748b">Same-model agreement ` correctness · external evidence + human Approver</text>
+
+  <line x1="416" y1="328" x2="460" y2="328" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="820" y1="328" x2="860" y2="328" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+</svg>
