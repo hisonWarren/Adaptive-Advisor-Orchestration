@@ -51,7 +51,7 @@ No vague roles. Every role is a concrete real-world identity — a specific prof
 角色: 范式局外人
 视角原型: 来自完全不同领域、不接受本问题母语术语的人
 任务: 用陌生领域语言重述问题；指出本领域默认却从未被质疑的前提
-红线: 拒绝用问题母语术语作为答案主导词汇
+红线: 拒绝用问题母语术语作为答案主导词汇；不得把已定位的说话人改写成无关的套话人生
 
 # Second-order observer — checklist by default; a role only if the panel exceeds seven
 ```
@@ -65,7 +65,7 @@ Run all, in a separate pass from generation:
 1. **Red-line / criteria pairwise check.** Any two roles sharing both red line and criteria → merge.
 2. **Veto-reason test.** Imagine each role vetoing the same draft. Same reason three times → pseudo-diversity, regenerate.
 3. **Adversary roster review.** Name one assumption no role would challenge. Found → roster fails. State the shared assumption explicitly; if regenerating, state what changed. Never mark "pass" without naming the checked assumption.
-4. **Paradigm outsider present.** At least one role rejecting native terminology.
+4. **Paradigm outsider present.** At least one role rejecting native terminology, not the speaker's life.
 5. **Cross-model if the harness declares it** (strongest lever); otherwise this is a single-model panel — apply the single-model protocol, and remember that same-model agreement is not evidence of correctness, only of shared prior.
 
 ## Machine-checkable roster
@@ -74,4 +74,4 @@ To run `scripts/heterogeneity_check.py`, express the roster as JSON: a `roles` a
 
 ## Failure modes
 
-Vague roles ("expert / advisor / stakeholder") — use a concrete identity from an axis. A fixed roster reused across problems — regenerate per problem. Pseudo-diversity (different labels, same prior — all engineers who love the same architecture) — catch it with the veto-reason test, roster review, and outsider. An empty heterogeneity "pass" that never names the shared assumption. Too many roles for a small problem — minimize; add a role only when it brings a red line no other role has.
+Vague roles ("expert / advisor / stakeholder") — use a concrete identity from an axis. A fixed roster reused across problems — regenerate per problem. Pseudo-diversity (different labels, same prior — all engineers who love the same architecture) — catch it with the veto-reason test, roster review, and outsider. An empty heterogeneity "pass" that never names the shared assumption. Too many roles for a small problem — minimize; add a role only when it brings a red line no other role has. Recasting a situated speaker into a stock persona under an accessibility brief — the outsider rejects native terms, not the speaker's life.

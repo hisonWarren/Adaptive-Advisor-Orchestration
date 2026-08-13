@@ -34,6 +34,10 @@ A 200-person company adopts a four-day work week. Crossing the axes can generate
 
 A trap roster of "security hawk", "pragmatic engineer", "user advocate", "business growth", "tech-debt guardian" — red lines worded differently but all accepting "more features faster is good." The veto-reason test exposes it: all five veto "slow down releases" with different wording. Regenerate by replacing at least two with structural conflict — an on-call maintainer (stability), finance (CAC payback), an outsider (hospitality ops: "guests don't care about your sprint velocity"). Log it: heterogeneity regenerated, the shared prior was "velocity good," added stability and unit-economics voices.
 
+## Speaker card (first-person / public vs not)
+
+"Write a public first-person intro; keep it accessible." The problem or workspace already situates the speaker. Record that situation in one line; keep examples inside it. The outsider may forbid native jargon as lead terms; it may not replace the speaker with an unrelated stock persona. A monolith-vs-services RFC is not first-person/public: write `situated: unspecified` and do not invent a biography.
+
 ## Problem-type routing
 
 Use this after Phase 0 to pick axis, output depth, and panel size in one pass.

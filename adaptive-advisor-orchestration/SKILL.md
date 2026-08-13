@@ -1,12 +1,12 @@
 ---
 name: adaptive-advisor-orchestration
 description: "Use this skill for any question or request whose best answer needs more than one perspective and a real evidence trail: architecture and RFC choices, methodology and research design, policy or organizational trade-offs, high-risk changes (data, migration, security, compliance), strategy, comparisons, family or interpersonal decisions with conflicting stakes, or anything a user asks expecting a thorough, well-grounded answer — even when they do not name a method or add any trigger word. Trigger whenever a problem has real disagreement inside it (competing domains, conflicting interests, or a seductive answer that hides a trade-off). It assembles a problem-specific review panel with a permanent adversary, a reality wall for absent affected people, and a paradigm outsider, and runs a six-phase construction-critique-reconstruction workflow. By default it runs EXECUTE (scripts and searches actually run); depth defaults to Standard: it detects whether code/web tools are available and, if so, actually runs its scripts and searches and shows the command+exit-code evidence, entering sub-agents adaptively for non-trivial problems; if no tools exist it says so and downgrades confidence rather than faking execution. Do NOT use it for simple lookups, trivial one-step edits, settled questions with a clear best practice, or emergencies needing immediate action — it self-rejects on those."
-license: MIT
+license: Proprietary. LICENSE.txt has complete terms
 ---
 
 # Adaptive Advisor Orchestration
 
-Version: **0.3.0** (mise-first + evals; Standard default)
+Version: **0.3.1** (gated speaker card)
 
 Let the problem grow its own review team — but always anchor three roles that do not depend on the problem: an adversary that attacks the hard core, a reality wall that represents the real people who must live with the decision, and at least one outsider who does not speak the problem's native language. The output is auditable, decision-oriented, and honest about its own limits — not role-play chatter.
 
@@ -24,7 +24,7 @@ The executing agent is the **facilitator**: it runs the phases in order, enforce
 ```
 [ ] Preflight FIRST: declare EXECUTE / EXECUTE+NET / REASONING-ONLY (bare invocation = Standard depth + EXECUTE scripts; no flag needed)
 [ ] Substrate: enter sub-agents by default on non-trivial problems (≥4 voices, parallel retrieval, high stakes); do NOT for trivial/settled ones
-[ ] Phase 0: ≤300-word problem + two-question gate → proceed or reject
+[ ] Phase 0: ≤300-word problem + two-question gate + speaker card or `situated: unspecified` → proceed or reject
 [ ] Phase 1: axis selection → roles + cards → guards + outsider → heterogeneity check (incl. roster review)
 [ ] Phase 2: 2–4 candidate options; guards mostly silent; axis-coverage check
 [ ] Phase 3: adversary steelman→attack→pre-mortem; wall load-test per affected person; critique only
@@ -101,6 +101,8 @@ Run this **before** assembling any panel.
 
 **Gray zone.** When an unusual factor — a novel constraint, an odd compliance requirement — introduces uncertainty with no ready best practice, the problem slides from clear to complicated and the method may trigger. Use the Minimal Version when time is tight.
 
+**Speaker card (gated).** If the run proceeds and the deliverable will be first-person or published under a named person, write one line before the panel: who is speaking, in what register, and which situation examples must come from. Use only what the problem, byline, or workspace already states. Do not invent a biography. If the deliverable is not first-person/public, write `situated: unspecified` and continue — do not tax an RFC or other non-authored task with a life story. Accessibility rewrites terminology; it does not recast a situated speaker into an unrelated stock persona.
+
 ## Role system
 
 Three layers, always composed together:
@@ -110,6 +112,8 @@ Three layers, always composed together:
 | **Adaptive roles** | Problem-specific perspectives | Generated per problem; keep the count minimal |
 | **Permanent guards** | Adversary + reality wall (+ second-order check) | Non-negotiable every time |
 | **Paradigm outsider** | At least one role that rejects the problem's native terminology | Mandatory every time |
+
+The paradigm outsider rejects native terminology, not the speaker's life. A stock persona swapped in to sound accessible is a failed outsider, not a successful one.
 
 The human user is the **Approver** (DACI). Never simulate the Approver.
 
@@ -159,7 +163,7 @@ The deepest risk of any multi-role method is pseudo-diversity: different labels,
 2. **Veto-reason test.** Imagine each role voting against the same draft. Would the reasons differ? Three identical veto reasons means pseudo-diversity — regenerate.
 3. **Independent sampling.** Generate roles in separate passes when possible, not one shot; one-shot listing lets later roles accommodate earlier ones.
 4. **Adversary roster review.** Find one assumption no role would challenge. If found, the roster fails. **Name the shared assumption explicitly**; if regenerating, state what changed. Never mark "pass" without naming the assumption checked — an empty pass is theater.
-5. **Paradigm outsider present.** At least one role that rejects the native terminology.
+5. **Paradigm outsider present.** At least one role that rejects the native terminology, not the speaker's life.
 6. **Smooth-consensus watch.** Fast unanimous agreement is a danger signal; introduce sharper opposition or a human checkpoint.
 
 Multi-agent debate only beats repeated single-agent sampling when genuine perspective differences exist; heterogeneity must be constructed and verified, not assumed. On a single model instance, all roles — adversary, wall, and outsider included — share weights and the same sycophancy bias, and a model cannot reliably self-correct its own reasoning from its own feedback. Structural gates reduce this but cannot remove it. The realistic mitigations are the single-model protocol in `references/execution-substrate.md` (review the artifact cold as external input, anchor claims to external evidence, keep prompts stance-free, use independent sampling to surface variance rather than to confirm) plus a named human backstop. Cross-model generation helps most but is an opportunistic bonus, not an assumption. **Same-model agreement is never evidence of correctness — only of shared prior.**
@@ -188,7 +192,7 @@ When execution is genuinely unavailable, the run still has two load-bearing move
 
 The rhythm is heavy construction → heavy critique → reconstruction. Let options form before attacking, then land them in reality. Copy-paste engine-switch prompts for each phase are in `references/prompts.md`.
 
-**Phase 0 · Qualification.** Run Stage 0. Output: problem statement + applicability verdict.
+**Phase 0 · Qualification.** Run Stage 0. Output: problem statement + speaker card or `situated: unspecified` + applicability verdict.
 
 **Phase 1 · Role generation.** Axis selection → decompose → fill role cards. Add the two hard guards plus at least one paradigm outsider. Decide second-order as checklist or role (role only if >7). Run the full heterogeneity protocol including the adversary roster review. Apply panel-size rules. Output: roster + completed cards.
 
@@ -214,7 +218,7 @@ The rhythm is heavy construction → heavy critique → reconstruction. Let opti
 
 ## Minimal version
 
-Use when time is tight but the problem is not clear/simple or chaotic. Phase 0 becomes a one-sentence qualification plus the two-question gate. Phase 1 becomes 2–3 adaptive roles plus the two hard guards plus one outsider. Phases 2–4 become one round per role, where the adversary must still run roster review, steelman, and one attack, and the wall must pass the reality gate. Phase 5 becomes a three-dimension sort (innovation, feasibility, human tolerance). Phase 6 becomes a one-sentence second-order check. **The adversary, reality wall, and paradigm outsider are never optional, even here.** A rough output with all three guards present beats a polished output where domain roles only agree with each other.
+Use when time is tight but the problem is not clear/simple or chaotic. Phase 0 becomes a one-sentence qualification plus the two-question gate plus speaker card or `situated: unspecified`. Phase 1 becomes 2–3 adaptive roles plus the two hard guards plus one outsider. Phases 2–4 become one round per role, where the adversary must still run roster review, steelman, and one attack, and the wall must pass the reality gate. Phase 5 becomes a three-dimension sort (innovation, feasibility, human tolerance). Phase 6 becomes a one-sentence second-order check. **The adversary, reality wall, and paradigm outsider are never optional, even here.** A rough output with all three guards present beats a polished output where domain roles only agree with each other.
 
 ## When not to use
 
@@ -237,7 +241,7 @@ Organize every phase's output as numbered issues and sub-points, not loose secti
 
 Within that skeleton, produce:
 
-- **Problem qualification** — statement (≤300 words), context type (clear / chaos / complicated / emergent), gate result.
+- **Problem qualification** — statement (≤300 words), speaker card or `situated: unspecified`, context type (clear / chaos / complicated / emergent), gate result.
 - **Panel setup** — axis choice, adaptive roles, permanent guards, paradigm outsider, panel method, heterogeneity result (pass or regenerated, and why).
 - **Construction** — candidate options.
 - **Adversarial findings** — roster review; steelman summary; core unpatchable attacks; pre-mortem plus feedback-loop probe; wall load-tests per person; reality gate per option.
@@ -284,7 +288,7 @@ Never frame simulated roles as real credentialed sign-off. Keep human decision a
 
 ## Anti-patterns
 
-Too many roles for a simple task. A fixed roster reused for every problem. Making the guards adaptive so the model can omit or soften the adversary. Merging the adversary and reality wall, which attack different failure modes. Role chatter with no decision impact. Treating smooth unanimous agreement as success. Compromise with no owner (missing DACI). No explicit decision criteria or numeric prioritization. No deferred trigger on open items. Running the full six phases on clear or chaotic problems. Endless rounds chasing "optimality" past diminishing returns. Marking heterogeneity "pass" without stating the shared assumption checked. Simulated compliance sign-off without an expert-review slot on regulated topics. The adversary attacking a real named colleague's character in a team-conflict setting. Making the adversary a standalone "only-objects" agent in an endless angel-versus-devil loop — it runs steelman → attack → reconstruction once and hands back. Using same-model multi-agent to fake heterogeneity — it is one prior in N hats; for real heterogeneity go cross-model or human. Reproducing the packaged scripts as inline `python -c` snippets to manufacture an exit code while skipping the stronger real check — call the files in `scripts/`, or declare REASONING-ONLY.
+Too many roles for a simple task. A fixed roster reused for every problem. Making the guards adaptive so the model can omit or soften the adversary. Merging the adversary and reality wall, which attack different failure modes. Role chatter with no decision impact. Treating smooth unanimous agreement as success. Compromise with no owner (missing DACI). No explicit decision criteria or numeric prioritization. No deferred trigger on open items. Running the full six phases on clear or chaotic problems. Endless rounds chasing "optimality" past diminishing returns. Marking heterogeneity "pass" without stating the shared assumption checked. Simulated compliance sign-off without an expert-review slot on regulated topics. The adversary attacking a real named colleague's character in a team-conflict setting. Making the adversary a standalone "only-objects" agent in an endless angel-versus-devil loop — it runs steelman → attack → reconstruction once and hands back. Using same-model multi-agent to fake heterogeneity — it is one prior in N hats; for real heterogeneity go cross-model or human. Reproducing the packaged scripts as inline `python -c` snippets to manufacture an exit code while skipping the stronger real check — call the files in `scripts/`, or declare REASONING-ONLY. Recasting a situated speaker into a stock persona to sound accessible. Inventing a biography on a task that is not first-person or public.
 
 ## Scripts
 

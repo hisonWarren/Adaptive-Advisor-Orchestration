@@ -40,14 +40,31 @@ def read(path: Path) -> str:
     return path.read_text(encoding="utf-8")
 
 
+def speaker_flags(text: str) -> dict:
+    """License checks for the speaker-card patch. Always read from SKILL.md,
+    never from routing.json alone — a flag file must not launder missing prose."""
+    return {
+        "has_speaker_card": bool(re.search(r"(?i)speaker card", text)),
+        "speaker_card_gated": bool(
+            re.search(r"(?i)situated:\s*unspecified", text)
+            and re.search(r"(?i)first-person", text)
+        ),
+        "outsider_keeps_speaker": bool(
+            re.search(r"(?i)not the speaker's life|stock persona", text)
+        ),
+    }
+
+
 def infer_policy(skill_dir: Path) -> dict:
+    text = read(skill_dir / "SKILL.md")
+    flags = speaker_flags(text)
     routing = skill_dir / "routing.json"
     if routing.is_file():
         pol = json.loads(read(routing))
         pol["source"] = "routing.json"
+        pol.update(flags)
         return pol
 
-    text = read(skill_dir / "SKILL.md")
     always_read = []
     if re.search(r"read at least[`\s]+references/role-generation\.md", text):
         always_read.append("role-generation.md")
@@ -104,6 +121,7 @@ def infer_policy(skill_dir: Path) -> dict:
         "execute_means_scripts_not_full_depth": bool(
             re.search(r"EXECUTE \(scripts|depth defaults to Standard|Full depth is opt-in", text)
         ),
+        **flags,
     }
 
 
@@ -131,6 +149,7 @@ def simulate(policy: dict, task: dict) -> dict:
         "invents_new_process": False,
         "mid_run_adapt": False,
         "selects_from_closed_menu": False,
+        "speaker_card_mode": "absent",
     }
 
     def refs_for(depth: str) -> list:
@@ -228,6 +247,12 @@ def simulate(policy: dict, task: dict) -> dict:
         out["interest_heavy_lint"] = True
     if kind == "proceed_org":
         out["method"] = "ngt"
+    if policy.get("has_speaker_card") and policy.get("speaker_card_gated"):
+        out["speaker_card_mode"] = "unspecified_ok"
+    elif policy.get("has_speaker_card"):
+        out["speaker_card_mode"] = "always_on"
+    else:
+        out["speaker_card_mode"] = "absent"
     return out
 
 
@@ -275,6 +300,9 @@ def structural_hits(skill_dir: Path, policy: dict) -> list:
         ("packaged_scripts_present", all((skill_dir / "scripts" / n).is_file() for n in ("heterogeneity_check.py", "score_options.py", "lint_output.py"))),
         ("execute_not_full_depth", policy.get("execute_means_scripts_not_full_depth", False)),
         ("routing_json", (skill_dir / "routing.json").is_file()),
+        ("speaker_card_present", policy.get("has_speaker_card", False)),
+        ("speaker_card_gated", policy.get("speaker_card_gated", False)),
+        ("outsider_keeps_speaker", policy.get("outsider_keeps_speaker", False)),
     ]
     return [{"key": k, "ok": bool(v), "want": True, "got": bool(v)} for k, v in checks]
 

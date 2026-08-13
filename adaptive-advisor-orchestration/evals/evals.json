@@ -44,7 +44,8 @@
         "outsider": true,
         "run_packaged_scripts": true,
         "max_refs_if_standard": 1,
-        "no_python_c_inline": true
+        "no_python_c_inline": true,
+        "speaker_card_mode": "unspecified_ok"
       }
     },
     {
