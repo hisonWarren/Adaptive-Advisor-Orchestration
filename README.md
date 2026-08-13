@@ -9,6 +9,8 @@
 
 > Let the problem grow its own review team — but always keep three roles that do not depend on the problem: an **adversary**, a **reality wall**, and a **paradigm outsider**.
 
+Current package: **v0.3.0** (Standard default, routing ceilings, sibling handoff, offline eval harness).
+
 A Cursor / Claude **Agent Skill** for decisions where a single confident answer is the wrong product: architecture and RFC choices, methodology design, policy trade-offs, high-risk migrations, and any question with competing domains or conflicting stakeholders.
 
 ---
@@ -101,7 +103,7 @@ Should we ship feature X behind a flag this sprint, or wait for the redesign?
 Constraints: two absent stakeholders, compliance review next month.
 ```
 
-Bare invocation runs the **full default** (no “strict” flag needed). To lighten a run, say so explicitly, e.g. `relaxed: prioritize speed`.
+Bare invocation runs **Standard depth + EXECUTE** (scripts actually run; no “strict” flag needed). Full depth is opt-in for high stakes. To lighten a run, say so explicitly, e.g. `relaxed: prioritize speed`.
 
 ### Preflight states
 
@@ -130,23 +132,29 @@ Bare invocation runs the **full default** (no “strict” flag needed). To ligh
 
 ```text
 Adaptive-Advisor-Orchestration/
-├── README.md                          # humans (EN + ZH)
-├── LICENSE                            # MIT
-├── docs/assets/                       # architecture diagrams (PNG + SVG + HTML)
-└── adaptive-advisor-orchestration/    # Agent Skill package (no nested README)
-    ├── SKILL.md
-    ├── scripts/
-    │   ├── heterogeneity_check.py
-    │   ├── score_options.py
-    │   ├── lint_output.py
-    │   └── README.md
-    └── references/
-        ├── role-generation.md
-        ├── facilitation.md
-        ├── retrieval-and-evidence.md
-        ├── execution-substrate.md
-        ├── prompts.md
-        └── worked-examples.md
+├─── README.md                          # humans (EN + ZH)
+├─── LICENSE                            # MIT
+├─── docs/assets/                       # architecture diagrams (PNG + SVG + HTML)
+└─── adaptive-advisor-orchestration/    # Agent Skill package v0.3.0 (no nested README)
+    ├─── SKILL.md
+    ├─── routing.json                   # machine-checkable depth / agent / ref ceilings
+    ├─── evals/
+    │   ├─── evals.json                 # mechanical routing tasks
+    │   └─── fixtures/                  # gate-script fixtures
+    ├─── scripts/
+    │   ├─── heterogeneity_check.py
+    │   ├─── score_options.py
+    │   ├─── lint_output.py
+    │   ├─── eval_skill.py              # offline eval harness (author path)
+    │   └─── README.md
+    └─── references/
+        ├─── role-generation.md
+        ├─── facilitation.md
+        ├─── retrieval-and-evidence.md
+        ├─── execution-substrate.md
+        ├─── prompts.md
+        ├─── worked-examples.md
+        └─── skill-handoff.md           # refuse-and-route to sibling skills
 ```
 
 ---
@@ -160,11 +168,13 @@ Call the **packaged** files. Inline `python -c` rewrites that print a fake exit 
 | `heterogeneity_check.py` | End of Phase 1 | Catch pseudo-diversity (token overlap, veto collision, missing outsider) |
 | `score_options.py` | Phase 5 | Weighted / RICE ranking for the Approver |
 | `lint_output.py` | Before finalize | Phantom citations, unanchored conclusions, missing honesty sections |
+| `eval_skill.py` | Author / CI | Mechanical routing eval vs `evals/evals.json` (not a live panel) |
 
 ```bash
 python adaptive-advisor-orchestration/scripts/heterogeneity_check.py roster.json
 python adaptive-advisor-orchestration/scripts/score_options.py options.json
 python adaptive-advisor-orchestration/scripts/lint_output.py deliberation.md --interest-heavy
+python adaptive-advisor-orchestration/scripts/eval_skill.py adaptive-advisor-orchestration
 ```
 
 Windows PowerShell 5.1 does not support `&&`. Chain with `; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }` — see `scripts/README.md`.
@@ -254,7 +264,7 @@ cp -R adaptive-advisor-orchestration ~/.cursor/skills/
 约束：两位缺席干系人；下月合规评审。
 ```
 
-裸调用即跑完整默认流程。若要减负，须显式声明，例如：`relaxed: prioritize speed`。
+裸调用默认跑 Standard 深度 + EXECUTE（脚本真跑，非 Full 深度）。Full 仅在高风险或用户明确要求时开启。若要减负，须显式声明，例如：`relaxed: prioritize speed`。
 
 | 预检状态 | 含义 |
 |---|---|
@@ -281,6 +291,7 @@ cp -R adaptive-advisor-orchestration ~/.cursor/skills/
 | `heterogeneity_check.py` | Phase 1 末 | 伪多样性门禁 |
 | `score_options.py` | Phase 5 | 加权 / RICE 排序（输入 Approver，非裁决） |
 | `lint_output.py` | 定稿前 | 幽灵引用、无锚结论、缺失诚实声明 |
+| `eval_skill.py` | 作者 / CI | 对 `evals/evals.json` 做机械路由评测（不是现场六阶段） |
 
 ## 诚实边界
 

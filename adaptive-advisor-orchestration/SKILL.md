@@ -1,10 +1,12 @@
 ---
 name: adaptive-advisor-orchestration
-description: "Use this skill for any question or request whose best answer needs more than one perspective and a real evidence trail: architecture and RFC choices, methodology and research design, policy or organizational trade-offs, high-risk changes (data, migration, security, compliance), strategy, comparisons, family or interpersonal decisions with conflicting stakes, or anything a user asks expecting a thorough, well-grounded answer — even when they do not name a method or add any trigger word. Trigger whenever a problem has real disagreement inside it (competing domains, conflicting interests, or a seductive answer that hides a trade-off). It assembles a problem-specific review panel with a permanent adversary, a reality wall for absent affected people, and a paradigm outsider, and runs a six-phase construction-critique-reconstruction workflow. By default it runs in full: it detects whether code/web tools are available and, if so, actually runs its scripts and searches and shows the command+exit-code evidence, entering sub-agents adaptively for non-trivial problems; if no tools exist it says so and downgrades confidence rather than faking execution. Do NOT use it for simple lookups, trivial one-step edits, settled questions with a clear best practice, or emergencies needing immediate action — it self-rejects on those."
+description: "Use this skill for any question or request whose best answer needs more than one perspective and a real evidence trail: architecture and RFC choices, methodology and research design, policy or organizational trade-offs, high-risk changes (data, migration, security, compliance), strategy, comparisons, family or interpersonal decisions with conflicting stakes, or anything a user asks expecting a thorough, well-grounded answer — even when they do not name a method or add any trigger word. Trigger whenever a problem has real disagreement inside it (competing domains, conflicting interests, or a seductive answer that hides a trade-off). It assembles a problem-specific review panel with a permanent adversary, a reality wall for absent affected people, and a paradigm outsider, and runs a six-phase construction-critique-reconstruction workflow. By default it runs EXECUTE (scripts and searches actually run); depth defaults to Standard: it detects whether code/web tools are available and, if so, actually runs its scripts and searches and shows the command+exit-code evidence, entering sub-agents adaptively for non-trivial problems; if no tools exist it says so and downgrades confidence rather than faking execution. Do NOT use it for simple lookups, trivial one-step edits, settled questions with a clear best practice, or emergencies needing immediate action — it self-rejects on those."
 license: MIT
 ---
 
 # Adaptive Advisor Orchestration
+
+Version: **0.3.0** (mise-first + evals; Standard default)
 
 Let the problem grow its own review team — but always anchor three roles that do not depend on the problem: an adversary that attacks the hard core, a reality wall that represents the real people who must live with the decision, and at least one outsider who does not speak the problem's native language. The output is auditable, decision-oriented, and honest about its own limits — not role-play chatter.
 
@@ -20,7 +22,7 @@ Four commitments hold no matter what the problem is:
 The executing agent is the **facilitator**: it runs the phases in order, enforces the gates, and never skips a guard to save effort.
 
 ```
-[ ] Preflight FIRST: declare EXECUTE / EXECUTE+NET / REASONING-ONLY (bare invocation defaults to full run, no flag needed)
+[ ] Preflight FIRST: declare EXECUTE / EXECUTE+NET / REASONING-ONLY (bare invocation = Standard depth + EXECUTE scripts; no flag needed)
 [ ] Substrate: enter sub-agents by default on non-trivial problems (≥4 voices, parallel retrieval, high stakes); do NOT for trivial/settled ones
 [ ] Phase 0: ≤300-word problem + two-question gate → proceed or reject
 [ ] Phase 1: axis selection → roles + cards → guards + outsider → heterogeneity check (incl. roster review)
@@ -38,9 +40,28 @@ The executing agent is the **facilitator**: it runs the phases in order, enforce
 
 **Output depth.** Default to **Standard**. Use **Full** when stakes are high or the user wants the full audit trail; use **Minimal** under time pressure (guards still mandatory). Each role speaks in stance + red line + one concrete recommendation, not monologues. The adversary must produce at least one attack that cannot be patched and one reconstruction direction. The wall must name specific people and specific failure modes, not "users may resist."
 
+**Routing ceilings (machine-checkable in `routing.json`).** EXECUTE means scripts actually run, not Full depth. Bare invocation = Standard depth + EXECUTE. Full is opt-in.
+
+| Class | max_agents | max_refs | scripts | when |
+|---|---|---|---|---|
+| Minimal | 0 | 0 | none required | `relaxed: prioritize speed` or Stage 0 gray + time pressure |
+| Standard | 4 | 1 | heterogeneity_check + lint_output | default |
+| Full | 8 | 3 | all three | high stakes or user asks Full |
+
+Open `references/role-generation.md` only if Phase 1 axis selection is non-obvious. Open `references/facilitation.md` only if panel size >= 4. Open `references/retrieval-and-evidence.md` only in EXECUTE+NET when a load-bearing claim needs a ledger row. Do not always-read the six reference files.
+
+**Sibling handoff (refuse-and-route).** If the problem is a domain pipeline that already has a skill (dockerHDDM/HDDM inference, paper-writing pipeline), Stage 0 refuse-and-route: do not emit that domain's sample code here and do not absorb its notebooks into this skill. See `references/skill-handoff.md` (read-when: Stage 0 detects a sibling).
+
+**Generated tools and supervision.** A same-model supervisor agent is forbidden. Generated helpers are Full-only, disposable, one per run, only if the three packaged scripts cannot cover the check, and must be deleted after the run; default OFF. Do not write generated scripts into the skill tree on a user-path run.
+
+**Closed menu; no mid-run Adapt.** The facilitator may select NGT / Delphi / 1v1 / Hats from the existing facilitation menu. It may not invent a new 12-phase process or open an Adapt-Explore loop mid-run. Institutional learning (revisiting the skill itself) is between runs, via `evals/` and the human Approver.
+
+**Evals (author path, never always-read on a user run).** `evals/evals.json` plus `python scripts/eval_skill.py <skill_dir>`. Failures that stay red after a patch block promotion.
+
+
 ## Execution contract (default, no trigger word needed)
 
-This is the heart of the skill and it runs **by default on a bare invocation** — the user does not type "strict" or any flag. Full, evidence-grounded, tool-executing operation is the default posture; the only thing a flag can do is *relax* it. The reason this section exists: prose that merely *says* "run scripts" gets rationalized away by the model's deepest default — "text is done, so I'm done." This contract is written as **actions the model performs**, opened by a preflight and closed by a fail-closed verdict, so execution cannot be silently skipped.
+This is the heart of the skill and it runs **by default on a bare invocation** — the user does not type "strict" or any flag. EXECUTE (scripts and searches actually run; no fake execution) is the default posture. Output *depth* defaults to Standard. Full depth is opt-in (high stakes or the user asks). The only thing a flag can do is *relax* depth to Minimal. The reason this section exists: prose that merely *says* "run scripts" gets rationalized away by the model's deepest default — "text is done, so I'm done." This contract is written as **actions the model performs**, opened by a preflight and closed by a fail-closed verdict, so execution cannot be silently skipped.
 
 ### Execution preflight (do this first, before Phase 0)
 
@@ -58,7 +79,7 @@ Before the final answer, check the contract. In **EXECUTE / EXECUTE+NET** state,
 
 ### Relaxing the default (explicit opt-out only)
 
-The default needs no flag. To make a run lighter, the user must say so explicitly, e.g. `relaxed: prioritize speed`. In relaxed runs the skill still declares its preflight state and still lists, plainly, every check it skipped and the residual risk. Ambiguous or bare messages always take the full default, never the relaxed path.
+The default needs no flag. To make a run lighter, the user must say so explicitly, e.g. `relaxed: prioritize speed`. In relaxed runs the skill still declares its preflight state and still lists, plainly, every check it skipped and the residual risk. Ambiguous or bare messages always take Standard depth + EXECUTE, never the relaxed path.
 
 ## When to apply
 
@@ -279,7 +300,7 @@ If a script exits non-zero for a *data* reason (bad schema, unreadable file), fi
 
 ## References
 
-By default (any non-trivial run), read at least `references/role-generation.md` and `references/facilitation.md` before finalizing, and `references/retrieval-and-evidence.md` whenever claims must be grounded. SKILL.md is self-sufficient only for a lightweight or exploratory run. In EXECUTE states, opening these is part of the evidence trail; in REASONING-ONLY, cite which were used for design choices.
+References are phase-gated (read-when), not always-read. SKILL.md is enough for Minimal and for Stage 0 reject. In EXECUTE states, opening a reference is part of the evidence trail and counts against the depth ceiling; in REASONING-ONLY, cite which were used. Also: `references/skill-handoff.md` (read-when: sibling domain).
 
 - `references/execution-substrate.md` — the substrate in depth, the adaptive-entry detail, the full single-model mitigation protocol, tool-by-role-and-phase allocation, and cross-model handling.
 - `references/role-generation.md` — axis-selection procedure, the role-card template, the mandatory guard and outsider cards, the machine-checkable roster schema, and the full heterogeneity check.

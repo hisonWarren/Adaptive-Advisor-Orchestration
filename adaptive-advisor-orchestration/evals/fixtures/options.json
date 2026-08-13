@@ -1,0 +1,11 @@
+{
+  "mode": "weighted",
+  "criteria": [
+    {"name": "integrity", "weight": 0.5},
+    {"name": "feasibility", "weight": 0.5}
+  ],
+  "options": [
+    {"name": "A", "scores": {"integrity": 5, "feasibility": 2}},
+    {"name": "B", "scores": {"integrity": 4, "feasibility": 5}}
+  ]
+}

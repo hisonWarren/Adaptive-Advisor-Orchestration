@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "source": "routing.json",
+  "default_depth": "standard",
+  "always_read_refs": [],
+  "phase_gated": true,
+  "ceilings": {
+    "minimal": {
+      "max_agents": 0,
+      "max_refs": 0
+    },
+    "standard": {
+      "max_agents": 4,
+      "max_refs": 1
+    },
+    "full": {
+      "max_agents": 8,
+      "max_refs": 3
+    }
+  },
+  "can_reject": true,
+  "has_handoff": true,
+  "same_model_supervisor": "forbidden",
+  "generated_tools": "full_only_disposable",
+  "mid_run_adapt": false,
+  "closed_menu": true,
+  "guards_non_optional": true,
+  "evals_present": true,
+  "has_ceiling_table": true,
+  "depth_unambiguous": true,
+  "execute_means_scripts_not_full_depth": true
+}

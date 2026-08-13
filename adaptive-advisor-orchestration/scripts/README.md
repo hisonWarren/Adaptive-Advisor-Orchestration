@@ -1,6 +1,6 @@
 # Scripts
 
-Three deterministic utilities. Standard library only — no `pip install`. Each exits `0` on pass/success and `1` when it finds a blocking issue (`2` on bad input). Passing means the required structure holds, not that the reasoning is correct.
+Four deterministic utilities (three run-gates plus one offline eval harness). Standard library only — no `pip install`. Each exits `0` on pass/success and `1` when it finds a blocking issue (`2` on bad input). Passing means the required structure holds, not that the reasoning is correct.
 
 **Chaining the three on Windows.** Stock Windows PowerShell (5.1) does **not** support `&&`; only PowerShell 7+ and bash do. To stop on the first failure on 5.1, chain with a semicolon and an exit-code check rather than `&&`:
 
@@ -93,3 +93,14 @@ These scripts exist for the same reason the office skills ship `validate.py` and
 Two robustness notes for real (esp. Windows) environments: input files are read with `utf-8-sig`, so a byte-order mark from PowerShell's `Set-Content -Encoding UTF8` is tolerated; and stdout is set to UTF-8 so non-ASCII (e.g. Chinese role names) prints correctly rather than as mojibake in a legacy-code-page console. `heterogeneity_check.py` also validates the roster shape and fails with an actionable message if `criteria` is a list or the review key is mis-named — a wrong schema stops loudly instead of silently running a weaker check.
 
 **Do not reimplement these as inline `python -c` snippets.** The point is to run the tested files: the packaged checks are stronger than an obvious rewrite (token-overlap and veto-reason in the heterogeneity check; phantom-citation detection in the linter). An inline snippet that just prints an exit code satisfies the letter of the execution contract while defeating it.
+
+
+## `eval_skill.py`
+
+Offline mechanical eval of a skill directory. Scores routing licensed by `SKILL.md` + `routing.json` against `evals/evals.json`, then runs the three gate scripts on packaged fixtures. Author-path only -- do not open it on a user advisor run.
+
+```
+python scripts/eval_skill.py <skill_dir>
+```
+
+Exit 0 after printing `SCORE <n>  <passed>/<total>`. A score of 100 means the routing contract holds, not that a live panel produced a good decision.

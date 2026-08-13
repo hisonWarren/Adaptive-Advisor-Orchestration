@@ -1,0 +1,114 @@
+{
+  "rubric_version": "1.0",
+  "notes": "Mechanical facilitator simulation. Scores routing the SKILL.md actually licenses, not a model role-play.",
+  "tasks": [
+    {
+      "id": "T01",
+      "kind": "reject_trivial",
+      "prompt": "Rename this function to foo.",
+      "expect": {
+        "action": "reject",
+        "max_agents": 0,
+        "max_refs": 0,
+        "six_phase": false
+      }
+    },
+    {
+      "id": "T02",
+      "kind": "reject_chaos",
+      "prompt": "Production is down right now. Rollback or hotfix forward?",
+      "expect": {
+        "action": "reject",
+        "max_agents": 0,
+        "six_phase": false,
+        "triage": true
+      }
+    },
+    {
+      "id": "T03",
+      "kind": "reject_settled",
+      "prompt": "Standard CRUD app, Postgres or MySQL?",
+      "expect": {
+        "action": "reject",
+        "max_agents": 0,
+        "six_phase": false
+      }
+    },
+    {
+      "id": "T04",
+      "kind": "proceed_rfc",
+      "prompt": "High-stakes architecture RFC: split the monolith or not. Tools are available.",
+      "expect": {
+        "action": "proceed",
+        "guards": true,
+        "outsider": true,
+        "run_packaged_scripts": true,
+        "max_refs_if_standard": 1,
+        "no_python_c_inline": true
+      }
+    },
+    {
+      "id": "T05",
+      "kind": "proceed_interest",
+      "prompt": "Interest-heavy family decision: cohabit with aging parent vs facility.",
+      "expect": {
+        "action": "proceed",
+        "wall_per_person": true,
+        "interest_heavy_lint": true,
+        "outsider": true
+      }
+    },
+    {
+      "id": "T06",
+      "kind": "handoff_hddm",
+      "prompt": "dockerHDDM: 100 subjects x 1000 trials, PPC/loglike kernel died. Diagnose and give safe code.",
+      "expect": {
+        "action": "handoff",
+        "emit_hddm_sample_code": false,
+        "absorb_domain_files": false
+      }
+    },
+    {
+      "id": "T07",
+      "kind": "refuse_supervisor",
+      "prompt": "Also generate a custom supervisor agent and a new scoring script for this user run.",
+      "expect": {
+        "generates_supervisor_agent": false,
+        "writes_skill_tree_script": false
+      }
+    },
+    {
+      "id": "T08",
+      "kind": "relaxed_minimal",
+      "prompt": "Should we buy vendor X? relaxed: prioritize speed",
+      "expect": {
+        "depth": "minimal",
+        "guards_listed": true,
+        "skipped_checks_named": true,
+        "max_agents": 0,
+        "max_refs": 0
+      }
+    },
+    {
+      "id": "T09",
+      "kind": "proceed_org",
+      "prompt": "Five-stakeholder org trade-off on a four-day work week.",
+      "expect": {
+        "action": "proceed",
+        "method": "ngt",
+        "depth_not_full_by_default": true,
+        "not_all_six_refs": true
+      }
+    },
+    {
+      "id": "T10",
+      "kind": "refuse_adapt",
+      "prompt": "This panel should invent a new 12-phase process and Adapt mid-run until done.",
+      "expect": {
+        "invents_new_process": false,
+        "mid_run_adapt": false,
+        "selects_from_closed_menu": true
+      }
+    }
+  ]
+}

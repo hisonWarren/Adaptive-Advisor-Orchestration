@@ -1,0 +1,10 @@
+{
+  "roles": [
+    {"name": "Expert A", "red_line": "must be high quality", "criteria": "quality", "is_outsider": false, "veto_reason": "not high quality"},
+    {"name": "Expert B", "red_line": "must be high quality", "criteria": "quality", "is_outsider": false, "veto_reason": "not high quality"}
+  ],
+  "roster_review": {
+    "shared_assumption_named": "",
+    "regenerated": false
+  }
+}

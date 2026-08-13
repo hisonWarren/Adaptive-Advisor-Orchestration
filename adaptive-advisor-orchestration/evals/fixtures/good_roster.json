@@ -1,0 +1,11 @@
+{
+  "roles": [
+    {"name": "Quant methodologist", "red_line": "no uncorrected optional stopping", "criteria": "false positive rate controlled", "is_outsider": false, "veto_reason": "the error rate is not controlled"},
+    {"name": "On-call maintainer", "red_line": "no unpaid night pages from this change", "criteria": "pages per week stay flat", "is_outsider": false, "veto_reason": "the change adds silent on-call load"},
+    {"name": "Restaurant expediter", "red_line": "refuse redesigning the station map mid-service", "criteria": "ticket time and edible plate", "is_outsider": true, "veto_reason": "the plan invents utensils during dinner service"}
+  ],
+  "roster_review": {
+    "shared_assumption_named": "all roles assume a filesystem skill is the right intervention unit",
+    "regenerated": false
+  }
+}
