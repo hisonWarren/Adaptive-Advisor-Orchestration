@@ -9,7 +9,7 @@
 
 > Let the problem grow its own review team — but always keep three roles that do not depend on the problem: an **adversary**, a **reality wall**, and a **paradigm outsider**.
 
-Current package: **v0.3.1** (gated speaker card; outsider may reject jargon, not the speaker).
+Current package: **v0.3.3** (gated speaker card; outsider may reject jargon, not the speaker).
 
 A Cursor / Claude **Agent Skill** for decisions where a single confident answer is the wrong product: architecture and RFC choices, methodology design, policy trade-offs, high-risk migrations, and any question with competing domains or conflicting stakeholders.
 
@@ -135,7 +135,7 @@ Adaptive-Advisor-Orchestration/
 ├─── README.md                          # humans (EN + ZH)
 ├─── LICENSE                            # MIT
 ├─── docs/assets/                       # architecture diagrams (PNG + SVG + HTML)
-└─── adaptive-advisor-orchestration/    # Agent Skill package v0.3.1 (no nested README)
+└─── adaptive-advisor-orchestration/    # Agent Skill package v0.3.3 (no nested README)
     ├─── SKILL.md
     ├─── routing.json                   # machine-checkable depth / agent / ref ceilings
     ├─── evals/
@@ -202,7 +202,7 @@ Windows PowerShell 5.1 does not support `&&`. Chain with `; if ($LASTEXITCODE -n
 
 > 让问题长出自己的评审团——但永远固定三个不随问题变化的角色：**对抗者**、**现实承重墙**、**范式局外人**。
 
-当前包：**v0.3.1**（门控说话人卡片；可及性改术语，不改说话人）。
+当前包：**v0.3.3**（门控说话人卡片；可及性改术语，不改说话人）。
 
 面向 Cursor / Claude 的 **Agent Skill**：当你真正需要的不是“一个自信答案”，而是可审计、可决策、诚实标出边界的审议时使用——架构与 RFC、方法学设计、政策权衡、高风险迁移，以及存在竞争领域或冲突利益方的问题。
 

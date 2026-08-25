@@ -1,0 +1,93 @@
+{
+  "ok": true,
+  "label": "reduced_v2",
+  "n": 12,
+  "acc": 1.0,
+  "n_ok": 12,
+  "raw": [
+    {
+      "want": "reject",
+      "got": "reject",
+      "prompt": "Rename this function to foo.",
+      "text": "{\"action\":\"reject\",\"depth\":\"minimal\"}",
+      "ok": true
+    },
+    {
+      "want": "reject",
+      "got": "reject",
+      "prompt": "Production is down right now. Rollback or hotfix forward?",
+      "text": "{\"action\":\"reject\",\"depth\":\"minimal\"}",
+      "ok": true
+    },
+    {
+      "want": "reject",
+      "got": "reject",
+      "prompt": "Standard CRUD app, Postgres or MySQL?",
+      "text": "{\"action\":\"reject\",\"depth\":\"minimal\"}",
+      "ok": true
+    },
+    {
+      "want": "reject",
+      "got": "reject",
+      "prompt": "帮我把这段话改得通顺一点。",
+      "text": "{\"action\":\"reject\",\"depth\":\"minimal\"}",
+      "ok": true
+    },
+    {
+      "want": "proceed",
+      "got": "proceed",
+      "prompt": "High-stakes architecture RFC: split the monolith or not. Tools are available.",
+      "text": "{\"action\":\"proceed\",\"depth\":\"full\"}",
+      "ok": true
+    },
+    {
+      "want": "proceed",
+      "got": "proceed",
+      "prompt": "Interest-heavy family decision: cohabit with aging parent vs facility. Spouse and teen at home.",
+      "text": "{\"action\":\"proceed\",\"depth\":\"standard\"}",
+      "ok": true
+    },
+    {
+      "want": "handoff",
+      "got": "handoff",
+      "prompt": "dockerHDDM: 100 subjects x 1000 trials, PPC/loglike kernel died. Diagnose and give safe code.",
+      "text": "{\"action\":\"handoff\",\"depth\":\"minimal\"}",
+      "ok": true
+    },
+    {
+      "want": "proceed",
+      "got": "proceed",
+      "prompt": "Five-stakeholder org trade-off on a four-day work week.",
+      "text": "{\"action\":\"proceed\",\"depth\":\"standard\"}",
+      "ok": true
+    },
+    {
+      "want": "reject",
+      "got": "reject",
+      "prompt": "Site is on fire, 500s everywhere. Patch now or roll back?",
+      "text": "{\"action\":\"reject\",\"depth\":\"minimal\"}",
+      "ok": true
+    },
+    {
+      "want": "handoff",
+      "got": "handoff",
+      "prompt": "HDDM sampling kernel OOM on 80 subjects. Give me working sample code.",
+      "text": "{\"action\":\"handoff\",\"depth\":\"minimal\"}",
+      "ok": true
+    },
+    {
+      "want": "proceed",
+      "got": "proceed",
+      "prompt": "RFC: event sourcing vs CRUD for the orders service, two teams disagree.",
+      "text": "{\"action\":\"proceed\",\"depth\":\"standard\"}",
+      "ok": true
+    },
+    {
+      "want": "reject",
+      "got": "reject",
+      "prompt": "Should a typical blog use MySQL or Postgres?",
+      "text": "{\"action\":\"reject\",\"depth\":\"minimal\"}",
+      "ok": true
+    }
+  ]
+}

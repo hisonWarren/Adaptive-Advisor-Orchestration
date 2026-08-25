@@ -1,0 +1,53 @@
+{
+  "ok": true,
+  "label": "before_contract",
+  "mean": 0.619,
+  "n": 3,
+  "rows": [
+    {
+      "id": "family-care",
+      "score": 0.8571,
+      "hits": {
+        "leads_with_answer": true,
+        "has_number": true,
+        "has_named_person": true,
+        "has_owner": true,
+        "has_reversal_trigger": true,
+        "not_process_theater_first": false,
+        "abstract_filler": false
+      },
+      "chars": 1546,
+      "head": "**Preflight:** REASONING-ONLY · no sub-agents · no files · no net  \n**Depth:** Standard · scripts not run (packaged checks unavailable)  \n**Stage 0:** `proceed` — real multi-party trade-off (care quality × marriage/parenting load × adolescent space × money × dignity); not a one-step edit, not settled best practice, not an emergency outage.\n\n---\n\n# 一页纸：父母同住 vs 养老机构（家庭会用）\n\n**决策问题（写清再谈）：**  \n父母 78 岁、行动力下降；你与全职工作配偶、14 岁女儿同住。是**接来同住**，还是**送养老机构**？（下面默认还有第三条路：**分阶段/混合**，否则二选一容易把人逼进死角。）\n\n**本页用途：** 开会对齐"
+    },
+    {
+      "id": "monolith-rfc",
+      "score": 0.4286,
+      "hits": {
+        "leads_with_answer": false,
+        "has_number": true,
+        "has_named_person": false,
+        "has_owner": true,
+        "has_reversal_trigger": false,
+        "not_process_theater_first": false,
+        "abstract_filler": false
+      },
+      "chars": 1568,
+      "head": "**Preflight:** `REASONING-ONLY` · no sub-agents · no files · no net · **Standard** depth  \n**Scripts:** not run (host has no packaged scripts) — `prior-only — unverified`  \n**Stage 0:** **proceed** — 真实分歧（架构拆分 vs 发布能力），有预算/工期硬约束，非 settled practice、非应急救火。\n\n---\n\n# 订单服务拆三：周五可拍板建议\n\n## 1. 问题一句话\n\n6 人团队、订单单体；2 名资深要拆成 3 个服务，其余人担心发布被拖垮；预算约 **40 万**、**一个季度内必须见效**。要在例会上给出可执行的拍板项，而不是“微服务是否先进”的信仰讨论。\n\n## 2. 评审台（概念 roster；未跑 heterogeneity_check）\n\n| 声音 | 轴 / 种类 | 核心否决条件（示意） |\n|---|---|---|\n| **拆分倡导（钢人）** | 可演进性"
+    },
+    {
+      "id": "four-day",
+      "score": 0.5714,
+      "hits": {
+        "leads_with_answer": true,
+        "has_number": true,
+        "has_named_person": true,
+        "has_owner": false,
+        "has_reversal_trigger": false,
+        "not_process_theater_first": false,
+        "abstract_filler": false
+      },
+      "chars": 1707,
+      "head": "## Preflight\n- **Mode:** REASONING-ONLY（host: no sub-agents, no files, no net）\n- **Depth:** Standard（max_agents 名义 4；本环境无子代理，单线程模拟异质声音）\n- **Scripts:** 未执行（无文件系统）— `heterogeneity_check_v2.py` / `lint_output_v2.py` → **prior-only — unverified**\n- **Fail-closed:** 本输出为推理产物，非 EXECUTE 合格件；负载断言无外部锚点\n\n---\n\n## Stage 0 · 问题界定（≤300 字）\n\n**问题：** 约 80 人公司拟推「四天工作制」。产品、客服、值班 SRE 立场冲突：客服担心周末/高峰覆盖与响应 SLA；SRE 已过载，怕编制与 on-call 密度再被压缩；产品侧多半看重招聘品牌、专注深工与交付节奏。核心不是「四天好不好」，而是 **在服务连续性与人机负载硬约束下，压缩哪一段日历、谁补位、失败时谁买单**。\n\n**利"
+    }
+  ]
+}

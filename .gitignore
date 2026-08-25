@@ -5,3 +5,7 @@ __pycache__/
 .venv/
 _runs/
 *.log
+
+# eval_lab work copies and caches
+eval_lab/candidates/worktree/
+eval_lab/**/__pycache__/

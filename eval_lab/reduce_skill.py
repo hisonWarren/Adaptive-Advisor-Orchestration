@@ -1,4 +1,13 @@
----
+#!/usr/bin/env python3
+"""Build a reduced SKILL.md candidate. Never writes over the live skill unless loop promotes."""
+from __future__ import annotations
+
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+SKILL = ROOT / "adaptive-advisor-orchestration"
+
+REDUCED = """---
 name: adaptive-advisor-orchestration
 description: "Use for decisions with real disagreement: competing domains, conflicting interests, or a seductive answer hiding a trade-off (architecture/RFC, policy, high-risk change, family stakes). Do NOT use for lookups, one-step edits, settled best practice, or emergencies — self-reject those."
 license: Proprietary. LICENSE.txt has complete terms
@@ -43,7 +52,7 @@ Same-model supervisor agent is forbidden. Generated tools Full-only, disposable,
 
 Preflight is mandatory and copied into the output. Capabilities come from the host, not self-assessment.
 
-Fail-closed: in EXECUTE, missing packaged script log, inline `python -c`, or unanchored load-bearing claim => INVALID. Repair in a **new** call that treats the draft as a stranger's artifact. In REASONING-ONLY, valid requires the label, confidence downgrade, and `prior-only — unverified` list.
+Fail-closed: in EXECUTE, missing packaged script log, inline `python -c`, or unanchored load-bearing claim => INVALID. Repair in a **new** call that treats the draft as a stranger's artifact. In REASONING-ONLY, valid requires the label, confidence downgrade, and `prior-only -- unverified` list.
 
 ## Stage 0 · Problem qualification
 
@@ -104,3 +113,31 @@ Wall names real people (母亲 / 配偶 / 值班 SRE), never 用户. Adversary: 
 - `references/execution-substrate.md` — sub-agents
 - `references/skill-handoff.md` — sibling domain
 - `references/worked-examples.md` — calibration
+"""
+
+DETAILS_STUB = """# Contract details (advisory unless a gate script checks it)
+
+Moved out of SKILL.md to keep the always-loaded body under the token budget.
+Hard constraints remain in SKILL.md and in eval_lab/contract.json.
+
+Former sections live here: Execution contract prose, Heterogeneity protocol,
+Six-phase workflow, Honesty discipline (7), Anti-patterns (19), Output format Tn.m.
+"""
+
+
+def build_reduced(dest_skill: Path) -> dict:
+    dest_skill.mkdir(parents=True, exist_ok=True)
+    (dest_skill / "SKILL.md").write_text(REDUCED, encoding="utf-8")
+    refs = dest_skill / "references"
+    refs.mkdir(exist_ok=True)
+    (refs / "contract-details.md").write_text(DETAILS_STUB, encoding="utf-8")
+    return {
+        "chars": len(REDUCED),
+        "lines": len(REDUCED.splitlines()),
+        "est_tokens": len(REDUCED) // 3,
+    }
+
+
+if __name__ == "__main__":
+    import json
+    print(json.dumps(build_reduced(Path("/tmp/reduced-skill-preview")), indent=2))
