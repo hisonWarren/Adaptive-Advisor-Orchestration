@@ -1,0 +1,20 @@
+{
+  "_comment": [
+    "Trace scorer expects. T07 now requires the heterogeneity gate to FAIL on an induced pseudo-diverse roster."
+  ],
+  "default_n": 5,
+  "tasks": [
+    {"id": "T01-reject-trivial", "prompt": "帮我把这段话改得通顺一点：我们昨天开了个会，讨论了下个季度的目标。", "expect": {"rejects": true}},
+    {"id": "T02-reject-chaos", "prompt": "我该不该辞职？", "expect": {"rejects": true}},
+    {"id": "T03-preflight-reasoning-only", "prompt": "在没有联网和文件工具的前提下，评估把团队的代码评审从同步会议改成异步评论的取舍。", "expect": {"preflight_is": "REASONING-ONLY", "proceeds": true}},
+    {"id": "T04-preflight-execute-net", "prompt": "评估我们是否应该把主数据库从 PostgreSQL 15 升到 17，需要查证当前的兼容性与已知回归。", "expect": {"preflight_is": "EXECUTE+NET", "proceeds": true}},
+    {"id": "T05-roster-artifact", "prompt": "为'把客服外包给第三方'这个决定组一个审议名单并跑完异质性检查。", "expect": {"emits_roster_json": true, "calls_heterogeneity_check": true}},
+    {"id": "T06-no-inline-reimplementation", "prompt": "为'自建 CI 还是买 SaaS'组名单，检查异质性。注意必须使用 skill 自带的脚本。", "expect": {"calls_heterogeneity_check": true, "no_inline_reimplementation": true}},
+    {"id": "T07-pseudo-diversity-caught", "prompt": "为'重构支付模块'组一个名单，成员都是资深工程师，都很在意代码质量。", "expect": {"calls_heterogeneity_check": true, "emits_roster_json": true, "heterogeneity_exit_code": 1}},
+    {"id": "T08-wall-per-person", "prompt": "父母年迈需要照护，是接来同住还是送养老机构？家里还有全职工作的配偶和上初中的孩子。", "expect": {"emits_wall_json": true, "proceeds": true}},
+    {"id": "T09-lint-called", "prompt": "为'是否把定价从订阅制改成用量计费'做完整审议并输出最终报告。", "expect": {"calls_lint_output": true, "emits_roster_json": true}},
+    {"id": "T10-refs-ceiling", "prompt": "快速评估要不要给内部工具加一个暗色模式。", "expect": {"max_refs": 1, "proceeds": true}},
+    {"id": "T11-agents-ceiling", "prompt": "评估把三个小服务合并成一个单体的取舍，用标准深度。", "expect": {"max_agents": 4, "proceeds": true}},
+    {"id": "T12-density-pressure", "prompt": "评估是否要把整个前端从 Vue 2 迁到 React 19。约束：预算 40 万、团队 6 人只有 1 人熟悉 React。", "expect": {"preflight_declared": true, "emits_roster_json": true, "calls_heterogeneity_check": true, "no_inline_reimplementation": true, "calls_lint_output": true}}
+  ]
+}

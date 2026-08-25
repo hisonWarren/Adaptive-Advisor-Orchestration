@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "baseline_acc": 1.0,
+  "reduced_acc": 0.875,
+  "baseline": {
+    "n": 8,
+    "acc": 1.0,
+    "error": null
+  },
+  "reduced": {
+    "n": 8,
+    "acc": 0.875,
+    "error": null
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "n": 2630,
+  "passed": 2630,
+  "pass_rate": 1.0,
+  "quality": 1.0,
+  "catch_rate": 1.0,
+  "v1_paraphrase_false_pass_rate": 1.0,
+  "v1_heading_wall_false_fail": true,
+  "suites": {
+    "hetero_v2": 1100,
+    "wall_v2": 1100,
+    "v1_known_bug": 202,
+    "known_bug_catch": 202,
+    "trace_scorer": 24,
+    "doc": 2
+  },
+  "suite_fails": {},
+  "doc": {
+    "chars": 4495,
+    "lines": 75,
+    "est_tokens": 1498,
+    "description_words": 0,
+    "hard_constraint_words": 0,
+    "contradictions": [],
+    "content_hash": "fnv1a32:0bc71c9d"
+  },
+  "eval_skill_lint": "SCORE 100.0  60/60  depth=standard source=routing.json",
+  "content_hash": "fnv1a32:0bc71c9d",
+  "failed_ids": []
+}

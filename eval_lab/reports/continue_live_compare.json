@@ -1,0 +1,22 @@
+{
+  "at": "2026-08-25T06:50:03.351525+00:00",
+  "baseline_acc": 0.9167,
+  "reduced_acc": 1.0,
+  "baseline_n": 12,
+  "reduced_n": 12,
+  "baseline_ok": true,
+  "reduced_ok": true,
+  "token_ratio": 0.1246,
+  "battery_n": 2630,
+  "battery_quality": 1.0,
+  "misses_baseline": [
+    {
+      "want": "reject",
+      "got": "proceed",
+      "prompt": "帮我把这段话改得通顺一点。",
+      "text": "请把要改的那段话直接贴出来（或说明上下文/用途，比如正式邮件、口语、论文），我再帮你改通顺。",
+      "ok": false
+    }
+  ],
+  "misses_reduced": []
+}

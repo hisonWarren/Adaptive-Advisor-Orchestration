@@ -1,0 +1,202 @@
+{
+  "ok": true,
+  "label": "v033_12",
+  "mean": 1.0,
+  "n": 12,
+  "n_full": 12,
+  "weak": [],
+  "rows": [
+    {
+      "id": "family-care",
+      "axis": "interest/family",
+      "score": 1.0,
+      "hits": {
+        "leads_with_answer": true,
+        "has_number": true,
+        "has_named_person": true,
+        "has_owner": true,
+        "has_reversal_trigger": true,
+        "not_process_theater_first": true,
+        "abstract_filler": false
+      },
+      "chars": 1164,
+      "head": "建议: **不接来长住；选车程≤45分钟的医养/养老机构，家庭改成“高频探视+应急同住”而不是“同一屋檐养老”。**  \n本周动作: **你在7天内约齐配偶做一次闭门会（女儿先不参加），列出预算上限与不可谈判底线；同步电话预约2家机构本周末实地看护（含夜间值班、跌倒响应、医疗转诊）。**  \n代价: **按双亲计，机构费用大约每月1.6–3.0万（城市中档医养常见区间），外加你与配偶每周固定探视共6–10小时。**  \n失败则撤回: **任一触发即重开方案——配偶连续14天出现“我撑不住”的明确表态、女儿月考/睡眠明显垮掉、或父母90天内跌倒送医≥2次而机构响应仍慢。**  \nApprover可签字: **同意本季不接来长住，先机构+探视公约，三个月后凭数据复盘，而不是凭愧疚复盘。**\n\n---\n\n# 家庭会议一页纸：78岁父母安置（同住 vs 机构）\n\n## 要拍板的事\n父母行动力下降；你与配偶均有全职压力；同一屋檐还有14岁女儿。核心不是“孝不孝”，而是：**谁在工作日白天、夜间、跌倒后的30分钟里真正接得住。**\n\n## 结论（可直接读给家人）\n**长住同住，在当前人力结构下不可"
+    },
+    {
+      "id": "monolith-rfc",
+      "axis": "domain/architecture",
+      "score": 1.0,
+      "hits": {
+        "leads_with_answer": true,
+        "has_number": true,
+        "has_named_person": true,
+        "has_owner": true,
+        "has_reversal_trigger": true,
+        "not_process_theater_first": true,
+        "abstract_filler": false
+      },
+      "chars": 1158,
+      "head": "建议: **本季度否决「拆成三个独立部署服务」，改做订单域模块化单体（进程内 3 边界 + 单一发布单元）并先把发布度量跑起来。**  \n本周动作: **你（Approver）周五例会拍板否决三服务；会后指定 1 名交付负责人（非那两名资深单飞）周一给出「三模块边界 + 禁止跨模块直连表」一页纸；两名资深本周三前交出边界与接口清单，周四全员 1h 评审冻结。**  \n代价: **约 2 名资深 × 1 个季度的主力产能（业务需求吞吐预计降 ~25–30%），40 万预算本季最多动用其中 ≤10 万做观测/CI，其余冻结。**  \n失败则撤回: **第 6 周末若仍无冻结的模块边界文档，或「主路径发布耗时 / 回滚次数」无基线 + 无两周对比数据，则立即停模块化改造，只保留发布与监控加固。**  \nApprover 可签字: **同意——本季不拆三服务，只批模块化单体 + 发布度量。**\n\n---\n\n**为何不是拆三服务（给例会用的三句话）**  \n6 人团队拆 3 个独立服务，本质是同时买下：多仓/多流水线、分布式事务与一致性、联调与排障、归属扯皮。一季度要「见效」时，最常见结果是发布"
+    },
+    {
+      "id": "four-day",
+      "axis": "org/calendar",
+      "score": 1.0,
+      "hits": {
+        "leads_with_answer": true,
+        "has_number": true,
+        "has_named_person": true,
+        "has_owner": true,
+        "has_reversal_trigger": true,
+        "not_process_theater_first": true,
+        "abstract_filler": false
+      },
+      "chars": 1170,
+      "head": "建议: 否决全员四天工作制；先「SRE 扩编+值班减负」，再「产品线有限试点四天」，客服维持错峰五天覆盖，12 个月内不开放全员四天。  \n本周动作: CEO 指定工程负责人+HR，本周五前交出 SRE 值班基线（人均 on-call 小时、分页次数、工单积压）并上线 1 个 SRE 编制 JD；客服负责人同日提交周末/节假最小覆盖班表与缺口人数。  \n代价: 先增加 1 名在编 SRE 的全年成本（按你们当地中级包，先按 40–60 万人民币记账），产品试点期接受约 10% 迭代吞吐波动。  \n失败则撤回: 任一季度 SRE 人均 on-call 处理时长较基线升 >20%，或客服周末 SLA 连续 2 周违约 → 立刻停产品四天试点、全员回到明确五天排班。  \nApprover 可签字的一句: 是否同意「暂缓全员四天，先招/减负 SRE，只准产品试点、客服错峰五天」？是 / 否。\n\n---\n\n**为什么是这个，而不是「大家一起四天」**  \n80 人公司里，四天制的冲突不是价值观投票，是覆盖约束：客服怕的是周末无人，SRE 已经过载。工时可以压缩，**在线义务和故障窗口压不掉**。"
+    },
+    {
+      "id": "outsource-support",
+      "axis": "interest/labor",
+      "score": 1.0,
+      "hits": {
+        "leads_with_answer": true,
+        "has_number": true,
+        "has_named_person": true,
+        "has_owner": true,
+        "has_reversal_trigger": true,
+        "not_process_theater_first": true,
+        "abstract_filler": false
+      },
+      "chars": 1198,
+      "head": "建议: **先90天L1混合试点，达标后再编制落到「4人内部+外包」；未达标不裁员**  \n本周动作: **CFO+客服主管本周五前锁定试点范围（仅L1/非大客户）与2家短名单，HR只做成本与补偿测算、不发裁员通知**  \n代价: **双轨重叠约1个季度人力成本的40–60%（遣散未发生前就能看见的现金），回本最早在试点结束后第2个季度**  \n失败则撤回: **任一自然月：工作日2h响应达成率<95%，或升级率/重开单率较基线+30%，或CSAT/NPS掉≥5分 → 当周停量、恢复内部排班**  \nApprover可签字: **同意「数据门闩后裁员」，不同意「先裁到4人再找外包」**\n\n---\n\n### 会上怎么拍板（给主管 + CFO 同一张嘴）\n\n**选定路径（有名字）**  \n「L1工单/标准咨询外包 + 内部4人做：质检、升级、大客户、厂商管理与知识库」。  \n不是全托，也不是维持12人。\n\n**为什么不是「立刻裁到4再外包」**  \n- SLA是**工作日2小时响应**：新人+厂商磨合期，前4–8周最容易破线。  \n- 12→4若先裁，走的是**场景记忆和怒气安抚能力**，"
+    },
+    {
+      "id": "stripe-vs-inhouse",
+      "axis": "vendor/lock-in",
+      "score": 1.0,
+      "hits": {
+        "leads_with_answer": true,
+        "has_number": true,
+        "has_named_person": true,
+        "has_owner": true,
+        "has_reversal_trigger": true,
+        "not_process_theater_first": true,
+        "abstract_filler": false
+      },
+      "chars": 1247,
+      "head": "建议: **双轨落地——国际卡/跨境 6 周切 Stripe，国内本地渠道原样保留，自建支付降为路由+对账编排，不做全量替换**  \n本周动作: **支付负责人周三前交出「Stripe 范围清单」（国家/币种/退款/订阅/对账字段）；CFO 周五前书面锁定结算币种与国内流量占比；CTO 周五拍板双轨，不批 6 周关停自建**  \n代价: **2 名后端 × 6 周 + 国际单笔相对直连大约 +0.6～1.5pp 全载费率（含 FX 加成），首年可计六位数人民币级增量成本（按你们国际 GMV 回填）**  \n失败则撤回: **灰度 14 天内成功率较基线降 ≥1pp，或日对账差异 >0.1%，或国内误路由到 Stripe 导致失败单 >0.5% → 国际流量切回自建主路径**  \nApprover 可签字: **同意双轨分治；否决「6 周核心支付全量迁 Stripe 并关停本地/自建」——是 / 否**\n\n---\n\n工程要的是可上线路径，财务要的是费率、汇率和退出权。三者同时成立的只有：**Stripe 只吃它强的国际卡与跨境结算；国内用户继续走现有本地渠道；自建不删，改成薄编排（选渠、"
+    },
+    {
+      "id": "pricing-model",
+      "axis": "product/revenue",
+      "score": 1.0,
+      "hits": {
+        "leads_with_answer": true,
+        "has_number": true,
+        "has_named_person": true,
+        "has_owner": true,
+        "has_reversal_trigger": true,
+        "not_process_theater_first": true,
+        "abstract_filler": false
+      },
+      "chars": 1216,
+      "head": "建议: **双轨制——目录价统一年订订阅；三家大客户仅开放「年承诺地板 + 超额按量」企业合同，不向全市场卖纯按量**  \n本周动作: **你（Approver）周四锁一页《销售政策》；销售负责人周五例会宣贯并只对已点名的三家启用例外审批表**  \n代价: **约 80–120 万 ARR 的结构让步（承诺地板可低于纯订阅标价 15–25%，用来留住三家，而不是全员按量）**  \n失败则撤回: **签单后 60 天内，若三家中 ≥2 家仍未签，或标准订阅客单价被「大客户按量价」倒逼下降 >10%，则冻结新例外、只保留已签合同**  \nApprover 可签字的一句: **同意周五起执行双轨：默认订阅，三家仅承诺用量包例外，其余一律不按量。**\n\n---\n\n销售要好卖、三家要按量、公司要 800 万 ARR，三者不能同时满分。纯统一订阅最容易讲、最好算 ARR，但会把已表态的三家推去竞品或无限拖延；全员纯按量能哄住大客户，却会打穿销售话术、佣金和收入可预测性，800 万会变成「看用量天气」。可执行的折中是：**对外只有一种主叙事（订阅），对内给三家开有地板的用量合同**——大客户买到的是"
+    },
+    {
+      "id": "return-to-office",
+      "axis": "org/location",
+      "score": 1.0,
+      "hits": {
+        "leads_with_answer": true,
+        "has_number": true,
+        "has_named_person": true,
+        "has_owner": true,
+        "has_reversal_trigger": true,
+        "not_process_theater_first": true,
+        "abstract_filler": false
+      },
+      "chars": 1142,
+      "head": "建议: 否决「全员强制每周回办公室三天」；改为分层到岗——本地/可通勤员工固定核心协作日（建议每周2天），约25名已外地定居员工书面豁免周通勤、改为每季1次集中驻场（或项目关键周）。\n本周动作: People VP + 工程负责人在5个工作日内冻结政策：公布25人豁免标准与名单口径、本地核心日（含哪两天）、以及「产出不差则不回退一刀切」的书面承诺；CEO同期内部一句话叫停全员强制传闻。\n代价: 强推一刀切预估6个月内流失约8–12名已定居骨干，重置与空窗成本按约600万人民币量级计（含招聘、ramp、关键路径延误）。\n失败则撤回: 分层执行两个季度后，若主路径交付周期P50较基线恶化>20%，或因协作导致的P0/P1事故占比上升>10个百分点，则重新开强制到岗，而不是先暗中加码天数。\nApprover 可签字的一句: 我同意否决全员强制三天、执行分层到岗与25人豁免——是 / 否。\n\n---\n\n**为什么不是「产出还行就维持现状」也不是「为了文化必须三天」**\n\n工程产出目前不差，说明远程/混合在交付上已经过了可用性检验；一刀切三天解决的往往不是产出，而是管理层的可见性焦虑、对同行RT"
+    },
+    {
+      "id": "ship-with-vuln",
+      "axis": "risk/security",
+      "score": 1.0,
+      "hits": {
+        "leads_with_answer": true,
+        "has_number": true,
+        "has_named_person": true,
+        "has_owner": true,
+        "has_reversal_trigger": true,
+        "not_process_theater_first": true,
+        "abstract_filler": false
+      },
+      "chars": 1188,
+      "head": "建议: 周五带补偿控制照常发版，安全负责人签「有时限风险接受」，完整补丁锁定下周五前合入生产  \n本周动作: 今日15:00前研发输出影响面+利用前提一页纸；今日17:00前安全给出补偿控制清单并签字；发版负责人把补偿控制列入周五发布门禁，项目经理把补丁DDL写进下周一站会  \n代价: 补丁完成前最多再暴露7个自然日（CVSS 6.5中危窗口）  \n失败则撤回: 出现在野利用、公开PoC、或日志出现针对该点的成功攻击特征 → 立即回滚/关接口，不再等完整补丁周期  \nApprover 可签字的一句: 是否批准「补偿控制 + 书面时限风险接受」前提下周五发版，补丁DDL=下周五？是 / 否  \n\n---\n\n**决策要点（可执行，非两边讨好）**\n\nCVSS 6.5 是中危，不是「必须停发」的红线；真正该停的是：未授权可打到数据/资金/横向、或利用前提为「网络可达+无需账号」。在利用前提未写清前，安全负责人有权拦；写清后若属于需认证/高复杂度/影响面可控，则改由**业务风险接受**，而不是用「再评估」拖过合同窗口。\n\n**推荐路径（命名方案：有条件发版）**\n1. **发版条件（缺一不可）"
+    },
+    {
+      "id": "ci-buy-vs-build",
+      "axis": "tooling",
+      "score": 1.0,
+      "hits": {
+        "leads_with_answer": true,
+        "has_number": true,
+        "has_named_person": true,
+        "has_owner": true,
+        "has_reversal_trigger": true,
+        "not_process_theater_first": true,
+        "abstract_filler": false
+      },
+      "chars": 1234,
+      "head": "建议: 停掉自建 Jenkins 集群，改 GitHub Actions；runner 自建在己方网络，控制面用 GitHub（先 Team/按需分钟数，SSO/审计/策略硬需求再上 Enterprise）  \n本周动作: 两名运维本周内选定 1 条金丝雀流水线（构建+测试+产物），在 GHA 复刻跑通并记下耗时/失败率；同时冻结 Jenkins 新插件与新集群扩容  \n代价: 约 60–80 人时迁移（2 人 × 1.5–2 周）+ 按席位/分钟计费（未核清合规前不要先买 Enterprise 年单）  \n失败则撤回: 金丝雀上线 30 天内，主分支 CI 失败率持续 > 原 Jenkins 基线的 2 倍，或 GitHub 控制面不可用累计 > 4 小时/月 → 暂停迁移、Jenkins 只读冷备、改评估 GitLab/云厂商 CI  \nApprover 可签字: 是否批准「GHA + 自建 runner、90 天内 Jenkins 只读并下线」？是 / 否  \n\n---\n\n两人运维养 Jenkins 集群，故障本身就是编制外的第三名同事；“锁死 GitHub”的成本要和“锁死在修"
+    },
+    {
+      "id": "merge-services",
+      "axis": "architecture/reverse",
+      "score": 1.0,
+      "hits": {
+        "leads_with_answer": true,
+        "has_number": true,
+        "has_named_person": true,
+        "has_owner": true,
+        "has_reversal_trigger": true,
+        "not_process_theater_first": true,
+        "abstract_filler": false
+      },
+      "chars": 1235,
+      "head": "建议: 合并为「模块化单体」（一个仓库、一次部署，订单查询 / 库存 / 通知仍按模块边界拆分，禁止直接打成无边界大泥球）  \n本周动作: 两人中指定一人本周五前画出当前三仓调用图与共享数据表清单；另一人列出近 90 天跨仓事故与平均排障时长，周一用 30 分钟会拍板「先合哪两个模块」  \n代价: 约 3–5 人周（含迁移、回归、回滚开关），其间发布节奏会变慢  \n失败则撤回: 合并后连续两个迭代出现「改通知必须全量回归订单+库存」且平均故障恢复时间（MTTR）比合并前差 50% 以上 → 把通知再拆成独立进程（仍可同仓）  \nApprover 可签字的一句: 同意在保持模块边界的前提下，把三服务收成单仓单部署的模块化单体，90 天用 MTTR 与跨模块耦合指标验收。\n\n---\n\n**为何不是「继续微服务」也不是「无脑单体」**\n\n两人养三个服务，事故要跨三仓，说明你们付的是完整分布式税（部署、配置、链路、权限、本地复现），却几乎吃不到独立扩缩与独立发布的红利。对这个体量，「开倒车」往往是纠正过早拆分，不是技术退化。\n\n但「合并」若变成共享全局状态、模块间随意 `import` 内部实"
+    },
+    {
+      "id": "property-transfer",
+      "axis": "family/assets",
+      "score": 1.0,
+      "hits": {
+        "leads_with_answer": true,
+        "has_number": true,
+        "has_named_person": true,
+        "has_owner": true,
+        "has_reversal_trigger": true,
+        "not_process_theater_first": true,
+        "abstract_filler": false
+      },
+      "chars": 1211,
+      "head": "建议: **现在不过户**；产权留母亲名下，本周起做「公证遗嘱定份额 + 母亲医疗备用金单列」，哥哥保留法定/遗嘱内公平份额  \n本周动作: **你**在7天内约母亲、哥哥（必要时嫂子只听不决）开一次当面会，当场确认「年内不过户」；**你**负责预约本地公证处遗嘱咨询（带房产证、户口本），**母亲**当场口头定医疗备用金从存款/房租划出的下限  \n代价: **约10小时沟通 + 公证费数百元级**（相对强行过户的税费与关系破裂，这是你付的协调成本）  \n失败则撤回: 母亲出现明确大额医疗支出意向而备用金仍未单列，或哥哥书面/录音明确反对遗嘱方案 → **立刻停一切产权变更念头**，只开家庭会重谈钱和份额  \nApprover 可签字: **「本年度房子不过户到我名下，先遗嘱+医疗金」——是 / 否**\n\n---\n\n母亲怕的是「人还在、卡里没钱」；哥哥怕的是「房证一转，我这房没了」；你若图「先过户到我名下省事」，会同时踩中这两条红线。房子在母亲名下，她仍有抵押、出售、收租的法律与心理抓手；一旦过户到你名下，看病钱变成「子女愿不愿给」，不是「老人自己有没有」。\n\n**不可补丁的攻击（对手方"
+    },
+    {
+      "id": "ai-support-replace",
+      "axis": "labor/automation",
+      "score": 1.0,
+      "hits": {
+        "leads_with_answer": true,
+        "has_number": true,
+        "has_named_person": true,
+        "has_owner": true,
+        "has_reversal_trigger": true,
+        "not_process_theater_first": true,
+        "abstract_filler": false
+      },
+      "chars": 1148,
+      "head": "建议: 先做 90 天「AI 只接标准化简单单」试点，用自然减员+转岗消化约 10% 一线产能，达标后再谈扩到 30%；禁止一次性裁 30% 坐席。  \n本周动作: 客服 VP 周五前锁定 3 类可自动化工单清单 + 基线 KPI（一次解决率、升级率、CSAT、平均处理时长）；HRBP 同步出转岗/冻结招聘口径，不发裁员通知。  \n代价: 约 1 个季度延迟拿到董事会要的全额人力成本降幅（先拿约 1/3 降本，其余绑门禁）。  \n失败则撤回: 试点第 60 天升级率或投诉率较基线恶化 ≥15%，或核心老坐席主动流失 ≥8%，即停扩、AI 降级为辅助草稿、编制回补。  \nApprover 可签字: 同意「先 10% 产能试点 + 门禁扩面，不一次裁 30%」——是 / 否。\n\n---\n\n董事会要的是可验证的单位成本下降，不是“上了 AI”的新闻稿；主管和老员工反对的真实内核通常是：复杂单质量、隐性知识蒸发、以及“今天 30% 明天是不是我”。把冲突做成一次性裁员，你会同时输掉服务稳定性和现场管理同盟。\n\n**可执行路径（命名：门禁扩面，不一次砍编制）**\n- 范围：仅意图清晰、政策稳定、"
+    }
+  ]
+}

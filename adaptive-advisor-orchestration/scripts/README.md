@@ -2,6 +2,15 @@
 
 Four deterministic utilities (three run-gates plus one offline eval harness). Standard library only — no `pip install`. Each exits `0` on pass/success and `1` when it finds a blocking issue (`2` on bad input). Passing means the required structure holds, not that the reasoning is correct.
 
+**v2 gates (preferred).** `heterogeneity_check_v2.py` and `lint_output_v2.py` were promoted after **2630** stability cases. They judge structured JSON (`criterion_axis` / `veto_condition` / `wall.json`), not prose regex. v1 scripts stay for compatibility; v1 Jaccard false-passes paraphrased pseudo-diversity (measured false-pass rate 1.0) and false-fails heading-style per-person walls.
+
+```bash
+python scripts/heterogeneity_check_v2.py roster.json
+python scripts/lint_output_v2.py deliberation.md --wall wall.json --interest-heavy
+```
+
+SKILL.md v0.3.3 Standard depth calls the v2 scripts. Keep v1 until a host cannot run v2.
+
 **Chaining the three on Windows.** Stock Windows PowerShell (5.1) does **not** support `&&`; only PowerShell 7+ and bash do. To stop on the first failure on 5.1, chain with a semicolon and an exit-code check rather than `&&`:
 
 ```powershell

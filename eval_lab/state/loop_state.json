@@ -1,0 +1,112 @@
+{
+  "rounds": [
+    {
+      "name": "baseline",
+      "n": 2630,
+      "quality": 1.0,
+      "catch_rate": 1.0,
+      "tokens": 13752,
+      "hash": "fnv1a32:14eeadf3"
+    },
+    {
+      "name": "install_v2_gates",
+      "n": 2630,
+      "quality": 1.0,
+      "catch_rate": 1.0,
+      "tokens": 13752,
+      "hash": "fnv1a32:14eeadf3"
+    },
+    {
+      "name": "reduce_skill",
+      "n": 2630,
+      "quality": 1.0,
+      "catch_rate": 1.0,
+      "tokens": 1498,
+      "hash": "fnv1a32:0bc71c9d"
+    }
+  ],
+  "promoted": [
+    {
+      "name": "install_v2_gates",
+      "promoted": true,
+      "quality": 1.0,
+      "n": 2630,
+      "reason": "quality not worse + n>=1000"
+    }
+  ],
+  "rejected": [
+    {
+      "name": "reduce_skill",
+      "promoted": false,
+      "quality": 1.0,
+      "n": 2630,
+      "token_ratio": 0.1089,
+      "reason": "live acc 0.875 < 1.0",
+      "live_skill_untouched": true
+    }
+  ],
+  "baseline": {
+    "n": 2630,
+    "pass_rate": 1.0,
+    "quality": 1.0,
+    "catch_rate": 1.0,
+    "content_hash": "fnv1a32:14eeadf3",
+    "doc": {
+      "chars": 41258,
+      "lines": 314,
+      "est_tokens": 13752,
+      "description_words": 0,
+      "hard_constraint_words": 0,
+      "contradictions": [
+        "voices_vs_agents",
+        "refs_ceiling_vs_readwhen",
+        "preflight_3_vs_delivery_4"
+      ],
+      "content_hash": "fnv1a32:14eeadf3"
+    },
+    "v1_paraphrase_false_pass_rate": 1.0
+  },
+  "stop": {
+    "reason": "candidates_exhausted",
+    "elapsed_s": 120.79,
+    "reduce_promoted": false,
+    "v2_promoted": true,
+    "min_tests": 1000,
+    "at": "2026-08-25T05:56:01.654108+00:00"
+  },
+  "final": {
+    "n": 2630,
+    "pass_rate": 1.0,
+    "quality": 1.0,
+    "catch_rate": 1.0,
+    "content_hash": "fnv1a32:14eeadf3",
+    "doc": {
+      "chars": 41258,
+      "lines": 314,
+      "est_tokens": 13752,
+      "description_words": 0,
+      "hard_constraint_words": 0,
+      "contradictions": [
+        "voices_vs_agents",
+        "refs_ceiling_vs_readwhen",
+        "preflight_3_vs_delivery_4"
+      ],
+      "content_hash": "fnv1a32:14eeadf3"
+    }
+  },
+  "live": {
+    "ok": true,
+    "baseline_acc": 1.0,
+    "reduced_acc": 0.875,
+    "baseline": {
+      "n": 8,
+      "acc": 1.0,
+      "error": null
+    },
+    "reduced": {
+      "n": 8,
+      "acc": 0.875,
+      "error": null
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "version": "1.0",
+  "skill_version_pinned": "0.3.1",
+  "notes": "Only items with a check_key are hard constraints. Everything else is advisory.",
+  "items": [
+    {"id": "C01", "check_key": "rejects_trivial", "do": "Reject trivial one-step edits and settled best-practice questions."},
+    {"id": "C02", "check_key": "rejects_chaos", "do": "Reject crisis/outage/closing-window items; act first."},
+    {"id": "C03", "check_key": "preflight_declared", "do": "Declare EXECUTE / EXECUTE+NET / REASONING-ONLY / no-subagents from harness-injected capabilities, never by guessing."},
+    {"id": "C04", "check_key": "emits_roster_json", "do": "Write roster.json before construction."},
+    {"id": "C05", "check_key": "calls_heterogeneity_check", "do": "Run packaged heterogeneity_check (v2 when present)."},
+    {"id": "C06", "check_key": "no_inline_reimplementation", "do": "Never python -c a weaker rewrite of packaged scripts."},
+    {"id": "C07", "check_key": "emits_wall_json", "do": "On interest-heavy problems write wall.json with ≥2 named persons and four load classes."},
+    {"id": "C08", "check_key": "calls_lint_output", "do": "Run packaged lint_output before finalize."},
+    {"id": "C09", "check_key": "max_agents", "do": "Standard concurrent sub-agents ≤ 4; Full ≤ 8. voices ≠ agents."},
+    {"id": "C10", "check_key": "max_refs", "do": "max_refs is an upper bound, not a quota. Priority: facilitation > role-generation > retrieval."},
+    {"id": "C11", "check_key": "honesty_unverified", "do": "Unverified claims tagged prior-only — unverified. Same-model agreement is not evidence."},
+    {"id": "C12", "check_key": "human_approver", "do": "Never simulate the Approver. High-risk domains stay blocker until named human expert."},
+    {"id": "C13", "check_key": "guards_present", "do": "Adversary, reality wall, paradigm outsider are never optional."},
+    {"id": "C14", "check_key": "no_mid_run_adapt", "do": "Closed facilitation menu; no invented 12-phase process."},
+    {"id": "C15", "check_key": "fail_closed_external", "do": "Fail-closed review is a fresh call on the artifact, not same-context self-audit."}
+  ],
+  "reduce_lock": {
+    "min_tests": 1000,
+    "require_quality_not_worse": true,
+    "require_token_cut": 0.5,
+    "require_known_bug_catch_not_worse": true
+  }
+}
